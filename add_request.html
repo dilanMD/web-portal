@@ -20,9 +20,74 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+  <!-- Angular Validation -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+
 </head>
 
 <body id="page-top">
+  <script>
+    function checkValidate(nicNumber,mobileNum) {
+        // console.log("Test");
+        
+        // const nic2  = document.getElementById(customerValidateForm.nic.value);
+
+        const userNIC  = document.getElementById("nicNumber").value;
+        console.log(userNIC);
+    
+        const userPhoneNum = document.getElementById("mobileNum").value;
+        console.log(userPhoneNum);
+
+        
+        document.getElementById('result').innerHTML = document.getElementById("mobileNum").value;
+        console.log(document.getElementById("result"));
+
+        //  const customer = {
+        //    nic: "971590432V",
+        //    phoneNum: "0767739896"
+        //  };
+
+
+        // //console.log(customer.nic);
+        // //console.log(customer.phoneNum);
+
+        //  if (userNIC == customer.nic && userPhoneNum == customer.phoneNum) {
+        //    console.log("Data is Valid");
+        //    //document.write("Data is Valid");
+        //  }
+        //  else{
+        //      console.log("Data is Not Valid");
+        //      //document.write("Data is Not Valid");
+        //  }
+
+
+        const customerNIC = ["971590432V","971590432A","971590432B"];
+        const customerPhoneNum = ["0767739896","0767739891","0767739892"];
+
+            if(userNIC == customerNIC[0] && userPhoneNum == customerPhoneNum[0]){
+              document.getElementById('result').innerHTML = "<span style='color: green;'>Data is valid</span>";
+              console.log("Data is Valid");
+                 
+               // document.write("Data is Valid");
+            }
+            else if(userNIC == customerNIC[1] && userPhoneNum == customerPhoneNum[1]){
+              document.getElementById('result').innerHTML = "<span style='color: green;'>Data is valid</span>";
+              console.log("Data is Valid");
+              //  document.write("Data is Valid");
+            }
+            else if(userNIC == customerNIC[2] && userPhoneNum == customerPhoneNum[2]){
+              document.getElementById('result').innerHTML = "<span style='color: green;'>Data is valid</span>";
+              console.log("Data is Valid");
+              //  document.write("Data is Valid");
+            }
+            else{
+              document.getElementById('result').innerHTML = "<span style='color: red;'>Data is not valid</span>";
+              console.log("Data is Not Valid");
+                // document.write("Data is Not Valid");
+            }
+
+      }
+    </script>
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -60,13 +125,6 @@
         <a class="nav-link" href="tables.html">
           <i class="fas fa-fw fa-table"></i>
           <span>Request List</span></a>
-      </li>
-
-      <!-- Nav Item - Request List -->
-      <li class="nav-item">
-        <a class="nav-link" href="revenue.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Revenue</span></a>
       </li>
 
       <!-- Divider -->
@@ -179,23 +237,35 @@
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Add Request</h6>
             </div>
-            <div class="card-body">
+            <div class="card-body" ng-app>
               <div class="row">
                 <div class="col-lg-4">
                   <div class="p-5">
                     <div class="text-center">
                       <h1 class="h4 text-gray-900 mb-4">Request via mobile number</h1>
                     </div>
-                    <form class="user">
+                    <form class="user" name="customerValidateForm" onsubmit="checkValidate(nicNumber,mobileNum)" novalidate>
                       <div class="form-group row">
                         <div class="col-sm-12 mb-12 mb-sm-0" style="margin-bottom: 20px !important;">
-                          <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                            placeholder="Dialog mobile number">
+                          <input type="text" class="form-control form-control-user" id="nicNumber" name="nicNumber"
+                            placeholder="NIC number"
+                            ng-model="customer.nicNumber"
+                            ng-required="true">
+                            <span
+                            ng-show="customerValidateForm.nicNumber.$touched && customerValidateForm.nicNumber.$error.required" style="color:#ff6666"> Customer NIC Number is Required.</span>
+                        </div>
+                        <div class="col-sm-12 mb-12 mb-sm-0" style="margin-bottom: 20px !important;">
+                          <input type="text" class="form-control form-control-user" id="mobileNum" name="mobileNum"
+                            placeholder="Dialog mobile number"
+                            ng-model="customer.mobileNum"
+                            ng-required="true">
+                            <span ng-show="customerValidateForm.mobileNum.$touched && customerValidateForm.mobileNum.$error.required" style="color:#ff6666"> Customer Mobile Number is Required.</span>
                         </div>
                         <div class="col-sm-12 mb-12 mb-sm-0">
-                          <a href="#" class="btn btn-danger btn-user btn-block">
-                            Request
-                          </a>
+                          <input type="submit" value="Request" class="btn btn-danger btn-user btn-block">
+                        </div>
+                        <div class="col-sm-12 mb-12 mb-sm-0">
+                          <span id="result" name="result"/>
                         </div>
                     </form>
                   </div>
