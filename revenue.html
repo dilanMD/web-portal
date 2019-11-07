@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Revenue</title>
+  <title>Dashboard</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -42,7 +42,7 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="dashboard.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
@@ -62,12 +62,91 @@
           <span>Request List</span></a>
       </li>
 
-      <!-- Nav Item - Request List -->
-      <li class="nav-item active">
-        <a class="nav-link" href="revenue.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Revenue</span></a>
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="revenue.html" data-toggle="collapse" data-target="#collapseTwo"
+          aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Enterprise</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Location</h6>
+            <form style="margin: 0 10px;">
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12">
+                  <div class="form-group row">
+                    <label for="location" class="col-sm-12 col-form-label">Colombo, Sri Lanka</label>
+                    <div class="col-sm-12">
+                      <input type="text" class="form-control form-control-sm" id="location"
+                        placeholder="+ province or city">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Age and Gender</h6>
+            <form style="margin: 0 10px;">
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12">
+                  <div class="form-group row">
+                    <label for="age" class="col-sm-12 col-form-label">Age</label>
+                    <div class="col-sm-5">
+                      <input type="text" class="form-control form-control-sm" id="age" placeholder="18">
+                    </div>
+                    <div class="col-sm-2">
+                      <span>-</span>
+                    </div>
+                    <div class="col-sm-5">
+                      <input type="text" class="form-control form-control-sm" id="age" placeholder="any">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="age" class="col-sm-12 col-form-label">Gender</label>
+                    <div class="col-sm-12">
+                      <button class="btn btn-sm btn-danger">All</button>
+                      <button class="btn btn-sm btn-secondary">Male</button>
+                      <button class="btn btn-sm btn-secondary">Female</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Product Specification</h6>
+            <form style="margin: 0 10px;">
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12">
+                  <div class="form-group row">
+                    <label for="category" class="col-sm-12 col-form-label">Category</label>
+                    <div class="col-sm-12">
+                      <select class="form-control form-control-sm" id="category">
+                        <option>Savings Account</option>
+                        <option>Personal Loan</option>
+                        <option selected>Credit Card</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="category" class="col-sm-12 col-form-label">Card Type</label>
+                    <div class="col-sm-12">
+                      <select class="form-control form-control-sm" id="category">
+                        <option>Bronze</option>
+                        <option selected>Gold</option>
+                        <option>Platinum</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
       </li>
+
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -175,7 +254,189 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+          <h1 class="h3 mb-2 text-gray-800">Enterprise</h1>
+
+          <!-- Content Row 1 -->
+          <div class="row">
+
+            <div class="col-xl-8 col-lg-7">
+
+              <!-- Bar Chart -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Sales Profile</h6>
+                </div>
+                <div class="card-body">
+                  <div class="chart-bar">
+                    <canvas id="myBarChart"></canvas>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Summary -->
+            <div class="col-xl-4 col-lg-5">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Summary</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <table class='table table-sm table-borderless'>
+                    <tr>
+                      <td class="font-weight-bold">Bank</td>
+                      <td class="text-right">Commercial Bank (Pvt) Ltd</td>
+                    </tr>
+                    <tr>
+                      <td class="font-weight-bold">Category</td>
+                      <td class="text-right">Credit card promotions</td>
+                    </tr>
+                    <tr>
+                      <td class="font-weight-bold">Sales Pitch</td>
+                      <td class="text-right">Credit card details</td>
+                    </tr>
+                    <tr>
+                      <td class="font-weight-bold">Card Type</td>
+                      <td class="text-right">Gold</td>
+                    </tr>
+                  </table>
+                  <hr>
+                  <table class='table table-sm table-borderless'>
+                    <tr>
+                      <td class="font-weight-bold">Region</td>
+                      <td class="text-right">Colombo - Western</td>
+                    </tr>
+                    <tr>
+                      <td class="font-weight-bold">Sample Size</td>
+                      <td class="text-right">3000</td>
+                    </tr>
+                    <tr>
+                      <td class="font-weight-bold">Comm mode</td>
+                      <td class="text-right">SMS</td>
+                    </tr>
+                    <tr>
+                      <td class="font-weight-bold">Characters</td>
+                      <td class="text-right">100 - 200</td>
+                    </tr>
+                    <tr>
+                      <td class="font-weight-bold">Attachments</td>
+                      <td class="text-right">None</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Row 2 -->
+          <div class="row">
+
+            <div class="col-xl-8 col-lg-7">
+
+              <!-- Initial Sales Pitch -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Initiate Sales Pitch</h6>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <div class="row">
+                      <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="form-group row">
+                          <label for="bank" class="col-sm-4 col-form-label">Bank</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control form-control-sm" id="bank"
+                              value="Commercial Bank (Pvt) Ltd" readonly>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="category" class="col-sm-4 col-form-label">Category</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control form-control-sm" id="category"
+                              value="Credit card promotions" readonly>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="pitch" class="col-sm-4 col-form-label">Sales Pitch</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control form-control-sm" id="pitch"
+                              value="Credit card details">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="cardType" class="col-sm-4 col-form-label">Card Type</label>
+                          <div class="col-sm-8">
+                            <select class="form-control form-control-sm" id="cardType">
+                              <option>Bronze</option>
+                              <option selected>Gold</option>
+                              <option>Platinum</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="form-group row">
+                          <label for="commMode" class="col-sm-4 col-form-label">Comm mode</label>
+                          <div class="col-sm-8">
+                            <button class="btn btn-sm btn-danger">SMS</button>
+                            <button class="btn btn-sm btn-secondary">E-mail</button>
+                            <button class="btn btn-sm btn-secondary">App Notification</button>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="subject" class="col-sm-4 col-form-label">Subject</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control form-control-sm" id="subject"
+                              value="Great time to get our new credit card">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="message" class="col-sm-4 col-form-label">Message body</label>
+                          <div class="col-sm-8">
+                            <textarea
+                              class="form-control form-control-sm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</textarea>
+                          </div>
+                        </div>
+                        <div class="input-group mb-3">
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="attachment" aria-describedby="attachment">
+                            <label class="custom-file-label" for="inputGroupFile01">Attachment</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <!-- Cost -->
+            <div class="col-xl-4 col-lg-4">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Cost</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <h3 class="font-weight-bold text-center" style="margin-bottom: 30px;">12,750.00 LKR</h3>
+                  <form class="form-inline">
+                    <div class="form-group col-md-3">
+                      <label for="couponLabel" class="sr-only">Coupon</label>
+                      <input type="text" readonly class="form-control-plaintext" id="couponLabel" value="Coupon">
+                    </div>
+                    <div class="form-group col-md-9">
+                      <label for="coupon" class="sr-only">Coupon</label>
+                      <input type="text" class="form-control" id="coupon">
+                    </div>
+                    <button type="submit" class="btn btn-sm btn-danger mb-2"
+                      style="margin-top: 20px; margin-left: auto; margin-right: auto;">PROCEED</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
 
         </div>
         <!-- /.container-fluid -->
@@ -187,7 +448,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+            <span>Copyright &copy; Dialog PSI 2019</span>
           </div>
         </div>
       </footer>
@@ -218,7 +479,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <a class="btn btn-primary" href="index.html">Logout</a>
         </div>
       </div>
     </div>
@@ -233,6 +494,14 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/chart-area-demo.js"></script>
+  <script src="js/demo/chart-pie-demo.js"></script>
+  <script src="js/demo/chart-bar-demo.js"></script>
 
 </body>
 
