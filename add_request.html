@@ -68,8 +68,7 @@
               document.getElementById('result').innerHTML = "<span class='alert alert-dismissible alert-success'><strong> Well! </strong>Data is valid </span>";
               document.getElementById('outputNIC').innerHTML = "Data has been verified. Now you can request to fetch below customer data. <br/>  <br/> Customer NIC Number: " +userNIC;
               document.getElementById('outputPhoneNum').innerHTML = "Customer Phone Number: " +userPhoneNum;
-              document.getElementById('disabledRequest').innerHTML = "<button type='button' class='btn btn-success btn-user btn-block'> Request </button>"
-
+              document.getElementById('disabledRequest').innerHTML = "<button type='button' class='btn btn-success btn-user btn-block' onclick='sendNotification()'> Request </button>"
               // <div class="form-group row">
               //         <div class="col-sm-6 mb-6 mb-sm-0">
               //           <a href="#" class="btn btn-success btn-user btn-block">
@@ -86,6 +85,7 @@
               document.getElementById('outputNIC').innerHTML = "Data has been verified. Now you can request to fetch below customer data. <br/>  <br/> Customer NIC Number: " +userNIC;
               document.getElementById('outputPhoneNum').innerHTML = "Customer Phone Number: " +userPhoneNum;
               document.getElementById('disabledRequest').innerHTML = "<button type='button' class='btn btn-success btn-user btn-block'> Request </button>"
+              sendSMSviaAPI();
               console.log("Data is Valid");
               //  document.write("Data is Valid");
             }
@@ -94,6 +94,7 @@
               document.getElementById('outputNIC').innerHTML = "Data has been verified. Now you can request to fetch below customer data. <br/>  <br/> Customer NIC Number: " +userNIC;
               document.getElementById('outputPhoneNum').innerHTML = "Customer Phone Number: " +userPhoneNum;
               document.getElementById('disabledRequest').innerHTML = "<button type='button' class='btn btn-success btn-user btn-block'> Request </button>"
+              sendSMSviaAPI();
               console.log("Data is Valid");
               //  document.write("Data is Valid");
             }
@@ -105,8 +106,10 @@
               console.log("Data is Not Valid");
                 // document.write("Data is Not Valid");
             }
-
       }
+
+  
+        
     </script>
 
   <!-- Page Wrapper -->
@@ -252,6 +255,7 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
+          
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -304,13 +308,7 @@
                         <span id="outputNIC" name="outputNIC"> </span>
                       </div>
                       <div class="col-md-12 col-sm-6 mb-3 mb-sm-0">
-                        <span type="text"  id="outputPhoneNum" name="outputPhoneNum"> From here you will see the detail user request form if the data is valid. 
-                          Welcome to the Dummy Text Generator!
-This handy tool helps you create dummy text for all your layout needs.
-
-We are gradually adding new functionality and we welcome your suggestions and feedback.
-
-Please feel free to send us any additional dummy texts.
+                        <span type="text"  id="outputPhoneNum" name="outputPhoneNum"> From here you will see the detail user request form if the data is valid.
                         </span>
                       </div>
                     </div>
@@ -318,8 +316,9 @@ Please feel free to send us any additional dummy texts.
                     <div class="form-group row">
                       <div class="col-sm-6 mb-6 mb-sm-0">
                         <div class="col-md-12 col-sm-6 mb-3 mb-sm-0">
-                          <span type="text"  id="disabledRequest" name="disabledRequest"> 
-                            <button type='button' class='btn btn-success btn-user btn-block' disabled> Request </button> </span>
+                          <span type="text"  id="disabledRequest" name="disabledRequest">
+                          <button type='submit' class='btn btn-success btn-user btn-block' id="requestSMSAPI" name="requestSMSAPI" disabled> Request </button>
+                            </span>
                       </div>
                         <a href="#" name="request" id="request" style="text-decoration: none">
                         </a>
@@ -414,6 +413,34 @@ Please feel free to send us any additional dummy texts.
 
     readTextFile("file:///Users/psi/Documents/Deluxan/web-portal/json/users.json");
   </script>
+
+  <script>
+function sendNotification() {
+  console.log("start")
+  const userPhoneNum = document.getElementById("mobileNum").value;
+
+        console.log(userPhoneNum)
+
+          var http = new XMLHttpRequest();
+var url = 'http://3.14.72.68:8088/api/notification/client/mobile/0755783205';
+var data = JSON.stringify({
+            "message": "Please verify",
+            "question": "string"
+          });
+http.open('POST', url, true);
+
+//Send the proper header information along with the request
+http.setRequestHeader('Content-type', 'application/json');
+
+http.onreadystatechange = function() {//Call a function when the state changes.
+    if(http.readyState == 4 && http.status == 200) {
+      console.log("=======response========")
+        alert(http.responseText);
+    }
+}
+http.send(data)
+}
+</script>
 
 </body>
 
