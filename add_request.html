@@ -99,6 +99,7 @@
               document.getElementById('result').innerHTML = "<span style='color: red;'>Data is not valid</span>";
               document.getElementById('outputNIC').innerHTML = "From here you will see the detail user request form if the data is valid.";
               document.getElementById('outputPhoneNum').innerHTML = " ";
+              document.getElementById('disabledRequest').innerHTML = "<button type='button' class='btn btn-success btn-user btn-block' disabled> Request </button>"
               console.log("Data is Not Valid");
                 // document.write("Data is Not Valid");
             }
@@ -306,7 +307,8 @@
                     <div class="form-group row">
                       <div class="col-sm-6 mb-6 mb-sm-0">
                         <div class="col-md-12 col-sm-6 mb-3 mb-sm-0">
-                          <span type="text"  id="disabledRequest" name="disabledRequest"> <button type='button' class='btn btn-success btn-user btn-block' disabled> Request </button> </span>
+                          <span type="text"  id="disabledRequest" name="disabledRequest"> 
+                            <button type='button' class='btn btn-success btn-user btn-block' disabled> Request </button> </span>
                       </div>
                         <a href="#" name="request" id="request" style="text-decoration: none">
                         </a>
