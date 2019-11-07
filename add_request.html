@@ -40,7 +40,7 @@
 
         
         document.getElementById('result').innerHTML = document.getElementById("mobileNum").value;
-        console.log(document.getElementById("result"));
+        //console.log(document.getElementById("result"));
 
         //  const customer = {
         //    nic: "971590432V",
@@ -66,22 +66,39 @@
 
             if(userNIC == customerNIC[0] && userPhoneNum == customerPhoneNum[0]){
               document.getElementById('result').innerHTML = "<span style='color: #29F55B;'>Data is valid</span>";
+              document.getElementById('outputNIC').innerHTML = "Customer NIC Number: " +userNIC;
+              document.getElementById('outputPhoneNum').innerHTML = "Customer Phone Number: " +userPhoneNum;
+              document.getElementById('disabledRequest').innerHTML = "<button type='button' class='btn btn-success btn-user btn-block'> Request </button>"
+
+              // <div class="form-group row">
+              //         <div class="col-sm-6 mb-6 mb-sm-0">
+              //           <a href="#" class="btn btn-success btn-user btn-block">
+              //             Request
+              //           </a>
+              //         </div>
+              // </div>
               console.log("Data is Valid");
                  
                // document.write("Data is Valid");
             }
             else if(userNIC == customerNIC[1] && userPhoneNum == customerPhoneNum[1]){
               document.getElementById('result').innerHTML = "<span style='color: #29F55B;'>Data is valid</span>";
+              document.getElementById('outputNIC').innerHTML = userNIC;
+              document.getElementById('outputPhoneNum').innerHTML = userPhoneNum;
               console.log("Data is Valid");
               //  document.write("Data is Valid");
             }
             else if(userNIC == customerNIC[2] && userPhoneNum == customerPhoneNum[2]){
               document.getElementById('result').innerHTML = "<span style='color: #29F55B;'>Data is valid</span>";
+              document.getElementById('outputNIC').innerHTML = userNIC;
+              document.getElementById('outputPhoneNum').innerHTML = userPhoneNum;
               console.log("Data is Valid");
               //  document.write("Data is Valid");
             }
             else{
               document.getElementById('result').innerHTML = "<span style='color: red;'>Data is not valid</span>";
+              document.getElementById('outputNIC').innerHTML = "From here you will see the detail user request form if the data is valid.";
+              document.getElementById('outputPhoneNum').innerHTML = " ";
               console.log("Data is Not Valid");
                 // document.write("Data is Not Valid");
             }
@@ -242,7 +259,7 @@
                 <div class="col-lg-4">
                   <div class="p-5">
                     <div class="text-center">
-                      <h1 class="h4 text-gray-900 mb-4">Request via mobile number</h1>
+                      <h1 class="h4 text-gray-900 mb-4">Verify the validity via mobile number</h1>
                     </div>
                     <form class="user" name="customerValidateForm" onsubmit="checkValidate(nicNumber,mobileNum)" novalidate>
                       <div class="form-group row">
@@ -262,7 +279,7 @@
                             <span ng-show="customerValidateForm.mobileNum.$touched && customerValidateForm.mobileNum.$error.required" style="color:#ff6666"> Customer Mobile Number is Required.</span>
                         </div>
                         <div class="col-sm-12 mb-12 mb-sm-0">
-                          <input type="submit" value="Request" class="btn btn-danger btn-user btn-block">
+                          <input type="submit" value="Verify" class="btn btn-danger btn-user btn-block" name="verify" id="verify">
                         </div>
                         <div class="col-sm-12 mb-12 mb-sm-0">
                           <span id="result" name="result"/>
@@ -274,42 +291,24 @@
               <div class="col-lg-8">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Fetched Data</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Request for Fetching Data</h1>
                   </div>
                   <form class="user">
                     <div class="form-group row">
                       <div class="col-md-12 col-sm-6 mb-3 mb-sm-0">
-                        <input type="text" class="form-control form-control-user" id="requestBy" value="Commercial Bank"
-                          readonly>
+                        <span id="outputNIC" name="outputNIC"> </span>
                       </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="text" class="form-control form-control-user" id="FirstName"
-                          placeholder="First Name">
-                      </div>
-                      <div class="col-sm-6">
-                        <input type="text" class="form-control form-control-user" id="LastName" placeholder="Last Name">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-sm-6">
-                        <input type="text" class="form-control form-control-user" id="street" placeholder="Street">
-                      </div>
-                      <div class="col-sm-6">
-                        <input type="text" class="form-control form-control-user" id="city" placeholder="City">
+                      <div class="col-md-12 col-sm-6 mb-3 mb-sm-0">
+                        <span type="text"  id="outputPhoneNum" name="outputPhoneNum"> From here you will see the detail user request form if the data is valid. </span>
                       </div>
                     </div>
                     <hr>
                     <div class="form-group row">
                       <div class="col-sm-6 mb-6 mb-sm-0">
-                        <a href="#" class="btn btn-success btn-user btn-block">
-                          Verify
-                        </a>
+                        <div class="col-md-12 col-sm-6 mb-3 mb-sm-0">
+                          <span type="text"  id="disabledRequest" name="disabledRequest"> <button type='button' class='btn btn-success btn-user btn-block' disabled> Request </button> </span>
                       </div>
-                      <div class="col-sm-6 mb-6 mb-sm-0">
-                        <a href="#" class="btn btn-danger btn-user btn-block">
-                          Decline
+                        <a href="#" name="request" id="request" style="text-decoration: none">
                         </a>
                       </div>
                     </div>
