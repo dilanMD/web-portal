@@ -65,8 +65,8 @@
         const customerPhoneNum = ["0767739896","0767739891","0767739892"];
 
             if(userNIC == customerNIC[0] && userPhoneNum == customerPhoneNum[0]){
-              document.getElementById('result').innerHTML = "<span style='color: #29F55B;'>Data is valid</span>";
-              document.getElementById('outputNIC').innerHTML = "Customer NIC Number: " +userNIC;
+              document.getElementById('result').innerHTML = "<span class='alert alert-dismissible alert-success'><strong> Well! </strong>Data is valid </span>";
+              document.getElementById('outputNIC').innerHTML = "Data has been verified. Now you can request to fetch below customer data. <br/>  <br/> Customer NIC Number: " +userNIC;
               document.getElementById('outputPhoneNum').innerHTML = "Customer Phone Number: " +userPhoneNum;
               document.getElementById('disabledRequest').innerHTML = "<button type='button' class='btn btn-success btn-user btn-block'> Request </button>"
 
@@ -82,22 +82,24 @@
                // document.write("Data is Valid");
             }
             else if(userNIC == customerNIC[1] && userPhoneNum == customerPhoneNum[1]){
-              document.getElementById('result').innerHTML = "<span style='color: #29F55B;'>Data is valid</span>";
-              document.getElementById('outputNIC').innerHTML = userNIC;
-              document.getElementById('outputPhoneNum').innerHTML = userPhoneNum;
+              document.getElementById('result').innerHTML = "<span class='alert alert-dismissible alert-success'><strong> Well! </strong>Data is valid </span>";
+              document.getElementById('outputNIC').innerHTML = "Data has been verified. Now you can request to fetch below customer data. <br/>  <br/> Customer NIC Number: " +userNIC;
+              document.getElementById('outputPhoneNum').innerHTML = "Customer Phone Number: " +userPhoneNum;
+              document.getElementById('disabledRequest').innerHTML = "<button type='button' class='btn btn-success btn-user btn-block'> Request </button>"
               console.log("Data is Valid");
               //  document.write("Data is Valid");
             }
             else if(userNIC == customerNIC[2] && userPhoneNum == customerPhoneNum[2]){
-              document.getElementById('result').innerHTML = "<span style='color: #29F55B;'>Data is valid</span>";
-              document.getElementById('outputNIC').innerHTML = userNIC;
-              document.getElementById('outputPhoneNum').innerHTML = userPhoneNum;
+              document.getElementById('result').innerHTML = "<span class='alert alert-dismissible alert-success'><strong> Well! </strong>Data is valid </span>";
+              document.getElementById('outputNIC').innerHTML = "Data has been verified. Now you can request to fetch below customer data. <br/>  <br/> Customer NIC Number: " +userNIC;
+              document.getElementById('outputPhoneNum').innerHTML = "Customer Phone Number: " +userPhoneNum;
+              document.getElementById('disabledRequest').innerHTML = "<button type='button' class='btn btn-success btn-user btn-block'> Request </button>"
               console.log("Data is Valid");
               //  document.write("Data is Valid");
             }
             else{
-              document.getElementById('result').innerHTML = "<span style='color: red;'>Data is not valid</span>";
-              document.getElementById('outputNIC').innerHTML = "From here you will see the detail user request form if the data is valid.";
+              document.getElementById('result').innerHTML = "<span class='alert alert-dismissible alert-danger'><strong> </strong>Data is not valid </span>";
+              document.getElementById('outputNIC').innerHTML = "From here you will see the detail user request form if the data is valid. Welcome to the Dummy Text Generator! This handy tool helps you create dummy text for all your layout needs. We are gradually adding new functionality and we welcome your suggestions and feedback. Please feel free to send us any additional dummy texts.";
               document.getElementById('outputPhoneNum').innerHTML = " ";
               document.getElementById('disabledRequest').innerHTML = "<button type='button' class='btn btn-success btn-user btn-block' disabled> Request </button>"
               console.log("Data is Not Valid");
@@ -283,7 +285,9 @@
                           <input type="submit" value="Verify" class="btn btn-danger btn-user btn-block" name="verify" id="verify">
                         </div>
                         <div class="col-sm-12 mb-12 mb-sm-0">
-                          <span id="result" name="result"/>
+                          <br/>
+                          <span id="result" name="result">
+                          </span>
                         </div>
                     </form>
                   </div>
@@ -292,7 +296,7 @@
               <div class="col-lg-8">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Request for Fetching Data</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Request for fetching data</h1>
                   </div>
                   <form class="user">
                     <div class="form-group row">
@@ -300,7 +304,14 @@
                         <span id="outputNIC" name="outputNIC"> </span>
                       </div>
                       <div class="col-md-12 col-sm-6 mb-3 mb-sm-0">
-                        <span type="text"  id="outputPhoneNum" name="outputPhoneNum"> From here you will see the detail user request form if the data is valid. </span>
+                        <span type="text"  id="outputPhoneNum" name="outputPhoneNum"> From here you will see the detail user request form if the data is valid. 
+                          Welcome to the Dummy Text Generator!
+This handy tool helps you create dummy text for all your layout needs.
+
+We are gradually adding new functionality and we welcome your suggestions and feedback.
+
+Please feel free to send us any additional dummy texts.
+                        </span>
                       </div>
                     </div>
                     <hr>
