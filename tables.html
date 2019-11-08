@@ -72,7 +72,7 @@
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
-      <!-- Sidebar Toggler (Sidebar) -->
+      <!-- Sidebar Toggler (Sidebar) -->#logoutModal
       <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
       </div>
@@ -188,7 +188,7 @@
                       <th>Phone Number</th>
                       <th>Requested party</th>
                       <th>Request status</th>
-                      <th>Requested Date</th>
+                      <th>User Details</th>
                     </tr>
                   </thead>
                   <tbody id="tbody">
@@ -246,6 +246,34 @@
     </div>
   </div>
 
+<!--  popup model-->
+  <div class="modal fade" id="popupModel" tabindex="-1" role="dialog" aria-labelledby="poupexampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="poupexampleModalLabel">Detail List </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         <h6> Name    : Leanne Graham</h6>
+          <h6>NIC NO  : 986412553V</h6>
+          <h6>Address : 148/56, Kirulapana</h6>
+          <h6>Package : Postpaid</h6>
+          <h6>Value of Plan: 400</h6>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -266,6 +294,7 @@
   <!-- API FETCH -->
   <script>
     var apiUrl = 'https://jsonplaceholder.typicode.com/users';
+
     fetch(apiUrl).then(response => {
       return response.json();
     }).then(data => {
@@ -282,12 +311,43 @@
             + '</span>'
             + '<span class="text">Pending</span>'
             + '</a></td>'
+          )
+          .append(
+            '<td><a href="#" data-toggle="modal" data-target="#popupModel">'
+            + '<button class="text btn btn-primary btn-sm">Details</button>'
+            + '</a></td>'
           );
       }
     }).catch(err => {
-
+      console.log(err);
     });
   </script>
+
+<!-- <script>-->
+<!-- console.log("sssssssssssssssssssssssssssssssss")-->
+<!--var students = [];-->
+<!--students.push({name:"a",roll:"9",age:13});-->
+<!--students.push({name:"b",roll:"10",age:14});-->
+<!--students.push({name:"c",roll:"11",age:15});-->
+
+<!--localStorage.setItem('studentsInfo', JSON.stringify(students));-->
+
+<!--// When you get more student information, you should:-->
+<!--var addNewStudent = function (name, roll, age) {-->
+<!--    // retrieve it (Or create a blank array if there isn't any info saved yet),-->
+<!--    var students = JSON.parse(localStorage.getItem('studentsInfo') || [];-->
+<!--    // add to it,-->
+<!--    students.push({name: name, roll: roll, age: age});-->
+<!--    // then put it back.-->
+<!--    localStorage.setItem('studentsInfo', JSON.stringify(students));-->
+<!--}-->
+
+<!--var list = [];-->
+<!--list localStorage.getItem('studentsInfo');-->
+
+
+
+<!-- </script>-->
 
 </body>
 
