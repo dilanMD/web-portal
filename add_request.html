@@ -31,11 +31,14 @@
         const userNIC = document.getElementById("nicNumber").value;
         const userPhoneNum = document.getElementById("mobileNum").value;
 
+        let today = new Date();
+        let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
         //defined verification list
         let customerList = [];
-        customerList.push({mobileNo: "0767739896", userNic: "971590432V"});
-        customerList.push({mobileNo: "0767739891", userNic: "971590432A"});
-        customerList.push({mobileNo: "0767739892", userNic: "971590432B"});
+        customerList.push({name:"A.M Fasrin", mobileNo: "0767739896", requestedParty: "Commercial Bank", userNic: "971590432V", requestedDate: date});
+        customerList.push({name:"Stevan Perera", mobileNo: "0767739891", requestedParty: "Bank of Ceylon", userNic: "971590433V", requestedDate: date});
+        customerList.push({name:"Mangala Senavirathna", mobileNo: "0767739892", requestedParty: "Peoples Bank", userNic: "971590434V", requestedDate: date});
 
         //check user info validation
         for (let i = 0; i < customerList.length; i++) {
@@ -45,16 +48,17 @@
                 document.getElementById('outputPhoneNum').innerHTML = "Customer Phone Number: " + userPhoneNum;
                 document.getElementById('disabledRequest').innerHTML = "<button type='button' class='btn btn-success btn-user btn-block' onclick='sendNotification()'> Request </button>"
 
+
                 //add valid data to the localStorage
                 let list = JSON.parse(localStorage.getItem('userInfo'));
                 if (list == null || list.length == 0) {
                     let userInfo = [];
-                    userInfo.push({mobileNo: userPhoneNum, userNic: userNIC});
+                    userInfo.push({name: customerList[i].name, mobileNo: userPhoneNum, requestedParty: customerList[i].requestedParty , userNic: userNIC, requestedDate: customerList[i].requestedDate});
                     localStorage.setItem('userInfo', JSON.stringify(userInfo));
                 } else {
                     let info = JSON.parse(localStorage.getItem('userInfo'));
 
-                    info.push({mobileNo: userPhoneNum, userNic: userNIC});
+                    info.push({name: customerList[i].name, mobileNo: userPhoneNum, requestedParty: customerList[i].requestedParty , userNic: userNIC, requestedDate: customerList[i].requestedDate});
                     localStorage.setItem('userInfo', JSON.stringify(info));
                 }
                 break;
@@ -379,7 +383,7 @@
 
 <script>
     function sendNotification() {
-        console.log("start")
+        console.log("start");
         const userPhoneNum = document.getElementById("mobileNum").value;
 
         console.log(userPhoneNum)
@@ -401,7 +405,9 @@
                 alert(http.responseText);
             }
         }
-        http.send(data)
+        http.send(data);
+        setTimeout("location.replace(\"./tables.html\")",3000);
+
     }
 </script>
 
