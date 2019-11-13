@@ -18,7 +18,7 @@
     rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="css/sb-admin-2.css" rel="stylesheet">
 
 </head>
 
@@ -69,9 +69,9 @@
           <i class="fas fa-fw fa-cog"></i>
           <span>Enterprise</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Location</h6>
+        <div id="collapseTwo" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner">
+            <h6 class="collapse-header mx-2">Location</h6>
             <form style="margin: 0 10px;">
               <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12">
@@ -86,8 +86,8 @@
               </div>
             </form>
           </div>
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Age and Gender</h6>
+          <div class="bg-white py-2 collapse-inner">
+            <h6 class="collapse-header mx-2">Age and Gender</h6>
             <form style="margin: 0 10px;">
               <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12">
@@ -115,8 +115,8 @@
               </div>
             </form>
           </div>
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Product Specification</h6>
+          <div class="bg-white py-2 collapse-inner">
+            <h6 class="collapse-header mx-2">Product Specification</h6>
             <form style="margin: 0 10px;">
               <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12">
@@ -140,6 +140,12 @@
                       </select>
                     </div>
                   </div>
+                  <div class="form-group row">
+                    <div class="col-sm-12">
+                      <input class="btn btn-danger btn-sm btn-block" onclick="updateChart()" value="Filter"
+                        style="cursor: pointer;" readonly />
+                    </div>
+                  </div>
                 </div>
               </div>
             </form>
@@ -152,9 +158,9 @@
       <hr class="sidebar-divider d-none d-md-block">
 
       <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
+      <!-- <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
+      </div> -->
 
     </ul>
     <!-- End of Sidebar -->
@@ -267,9 +273,11 @@
                   <h6 class="m-0 font-weight-bold text-primary">Sales Profile</h6>
                 </div>
                 <div class="card-body">
-                  <div class="chart-bar">
+                  <div class="chart-bar" id="renderRandomData">
                     <canvas id="myBarChart"></canvas>
                   </div>
+                  <span class="text-primary" style="margin-right: 20px;">Men</span>
+                  <span class="text-danger">Women</span>
                 </div>
               </div>
 
@@ -366,13 +374,12 @@
                           </div>
                         </div>
                         <div class="form-group row">
-                          <label for="cardType" class="col-sm-4 col-form-label">Card Type</label>
-                          <div class="col-sm-8">
-                            <select class="form-control form-control-sm" id="cardType">
-                              <option>Bronze</option>
-                              <option selected>Gold</option>
-                              <option>Platinum</option>
-                            </select>
+                          <div class="col-sm-12">
+                            <div class="form-group">
+                              <label for="range">Range</label>
+                              <input type="range" class="form-control-range" id="range" min="1000" max="5000"
+                                onchange="rangeSlider()">
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -420,7 +427,9 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <h3 class="font-weight-bold text-center" style="margin-bottom: 30px;">12,750.00 LKR</h3>
+                  <h3 class="font-weight-bold text-center" style="margin-bottom: 30px;" id="rangeSliderValue">LKR
+                    25,000.00
+                  </h3>
                   <form class="form-inline">
                     <div class="form-group col-md-3">
                       <label for="couponLabel" class="sr-only">Coupon</label>
@@ -433,6 +442,9 @@
                     <button type="submit" class="btn btn-sm btn-danger mb-2"
                       style="margin-top: 20px; margin-left: auto; margin-right: auto;">PROCEED</button>
                   </form>
+                </div>
+                <div class="card-footer bg-danger">
+                  <h5 class="text-white text-center font-weight-bold">Total users : 14 Million</h5>
                 </div>
               </div>
             </div>
@@ -502,6 +514,32 @@
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script>
   <script src="js/demo/chart-bar-demo.js"></script>
+
+  <!-- Range Slider -->
+  <script>
+
+    // Changing Total Cost Value as per the slider
+    function rangeSlider() {
+      var rangeValue = document.getElementById("range").value;
+      var totalCost = rangeValue * 10;
+      var totalCostElement = document.getElementById("rangeSliderValue");
+      var lankanFormat = totalCost.toLocaleString("en-IN", { style: "currency", currency: "LKR" });
+      totalCostElement.innerText = lankanFormat;
+    }
+
+    function randomGenerator() {
+      return Math.floor(Math.random() * (8000 - 1000) + 1000);
+    }
+
+    function updateChart() {
+      // console.log(myBarChart.data.datasets[0].data)
+      var randomNumber = Math.floor(Math.random() * (1000 - 100) + 100);
+      myBarChart.data.datasets[0].data = [randomGenerator(), randomGenerator(), randomGenerator(), randomGenerator(), randomGenerator(), randomGenerator()];
+      myBarChart.data.datasets[1].data = [randomGenerator(), randomGenerator(), randomGenerator(), randomGenerator(), randomGenerator(), randomGenerator()];
+      myBarChart.update();
+    }
+
+  </script>
 
 </body>
 

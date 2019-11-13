@@ -11002,3 +11002,17 @@ body.sidebar-toggled footer.sticky-footer {
 #login-margin {
   margin-top: 250px;
 }
+
+#colorOne {
+  background-color: #4e73df;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+
+#colorTwo {
+  background-color: #e74a3b;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
