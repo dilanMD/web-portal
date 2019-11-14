@@ -35,86 +35,87 @@
             let today = new Date();
             let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
-            //defined verification list
-            let customerList = [];
-            customerList.push({ name: "A.M Fasrin", mobileNo: "0767739896", requestedParty: "Commercial Bank", userNic: "971590432V", requestedDate: date });
-            customerList.push({ name: "Stevan Perera", mobileNo: "0767739891", requestedParty: "Bank of Ceylon", userNic: "971590433V", requestedDate: date });
-            customerList.push({ name: "Mangala Senavirathna", mobileNo: "0767739892", requestedParty: "Peoples Bank", userNic: "971590434V", requestedDate: date });
+        //defined verification list
+        let customerList = [];
+        customerList.push({name:"Akalanka Herath", mobileNo: "0777330605", requestedParty: "Moratuwa Branch", userNic: "903172568V", requestedDate: date, address: "655/1, St Anthony’s road, Moratuwa."});
+        customerList.push({name:"Pasindu Liyanage", mobileNo: "0777333698", requestedParty: "Pannipitiya Branch", userNic: "942780338V", requestedDate: date, address: "205/3, Cemetery Road, Pelanwatta, Pannipitiya."});
+        customerList.push({name:"Nidura Prageeth", mobileNo: "0755783205", requestedParty: "Panadura Branch", userNic: "951221910V", requestedDate: date, address: "Rannidu, Kapugoda, Maggona"});
+        customerList.push({name:"A.M Fasrin", mobileNo: "0767739896", requestedParty: "Kolannawa Branch", userNic: "971590432V", requestedDate: date, address: "244/2A Manikkamulla Road, Gothatuwa"});
+        customerList.push({name:"Deluxan", mobileNo: "0767795737", requestedParty: "Wellawatta Branch", userNic: "199019010054", requestedDate: date, address: "Mannar."});
+        customerList.push({name:"Gayan Dushantha", mobileNo: "0777298595", requestedParty: "Moratuwa Branch", userNic: "921712642V", requestedDate: date, address: "378/A2, Diganathuduwa Rd, Pamunugama, Alubomulla"});
 
-            //check user info validation
-            for (let i = 0; i < customerList.length; i++) {
-                if (customerList[i].mobileNo == userPhoneNum && customerList[i].userNic == userNIC) {
-                    document.getElementById('result').innerHTML = "<span class='alert alert-dismissible alert-success'><strong> Well! </strong>Data is valid </span>";
-                    document.getElementById('outputNIC').innerHTML = "Data has been verified. Now you can request to fetch below customer data. <br/>  <br/> Customer NIC Number: " + userNIC;
-                    document.getElementById('outputPhoneNum').innerHTML = "Customer Phone Number: " + userPhoneNum;
-                    document.getElementById('disabledRequest').innerHTML = "<button type='button' class='btn btn-success btn-user btn-block' onclick='sendNotification()'> Request </button>"
+        //check user info validation
+        for (let i = 0; i < customerList.length; i++) {
+            if (customerList[i].mobileNo == userPhoneNum && customerList[i].userNic == userNIC) {
+                document.getElementById('result').innerHTML = "<span class='alert alert-dismissible alert-success'><strong> Well! </strong>Data is valid </span>";
+                document.getElementById('outputNIC').innerHTML = "Data has been verified. Now you can request to fetch below customer data. <br/>  <br/> Customer NIC Number: " + userNIC;
+                document.getElementById('outputPhoneNum').innerHTML = "Customer Phone Number: " + userPhoneNum;
+                document.getElementById('disabledRequest').innerHTML = "<button type='button' class='btn btn-success btn-user btn-block' onclick='sendNotification()'> Request </button>"
 
 
-                    //add valid data to the localStorage
-                    let list = JSON.parse(localStorage.getItem('userInfo'));
-                    if (list == null || list.length == 0) {
-                        let userInfo = [];
-                        userInfo.push({ name: customerList[i].name, mobileNo: userPhoneNum, requestedParty: customerList[i].requestedParty, userNic: userNIC, requestedDate: customerList[i].requestedDate });
-                        localStorage.setItem('userInfo', JSON.stringify(userInfo));
-                    } else {
-                        let info = JSON.parse(localStorage.getItem('userInfo'));
-
-                        info.push({ name: customerList[i].name, mobileNo: userPhoneNum, requestedParty: customerList[i].requestedParty, userNic: userNIC, requestedDate: customerList[i].requestedDate });
-                        localStorage.setItem('userInfo', JSON.stringify(info));
-                    }
-                    break;
+                //add valid data to the localStorage
+                let list = JSON.parse(localStorage.getItem('userInfo'));
+                if (list == null || list.length == 0) {
+                    let userInfo = [];
+                    userInfo.push({name: customerList[i].name, mobileNo: userPhoneNum, requestedParty: customerList[i].requestedParty , userNic: userNIC, requestedDate: customerList[i].requestedDate, address: customerList[i].address});
+                    localStorage.setItem('userInfo', JSON.stringify(userInfo));
                 } else {
-                    document.getElementById('result').innerHTML = "<span class='alert alert-dismissible alert-danger'><strong> </strong>Data is not valid </span>";
-                    document.getElementById('outputNIC').innerHTML = "From here you will see the detail user request form if the data is valid. Welcome to the Dummy Text Generator! This handy tool helps you create dummy text for all your layout needs. We are gradually adding new functionality and we welcome your suggestions and feedback. Please feel free to send us any additional dummy texts.";
-                    document.getElementById('outputPhoneNum').innerHTML = " ";
-                    document.getElementById('disabledRequest').innerHTML = "<button type='button' class='btn btn-success btn-user btn-block' disabled> Request </button>"
-                    console.log("Data is Not Valid");
+                    let info = JSON.parse(localStorage.getItem('userInfo'));
+
+                    info.push({name: customerList[i].name, mobileNo: userPhoneNum, requestedParty: customerList[i].requestedParty , userNic: userNIC, requestedDate: customerList[i].requestedDate, address: customerList[i].address});
+                    localStorage.setItem('userInfo', JSON.stringify(info));
                 }
+                break;
+            } else {
+                document.getElementById('result').innerHTML = "<span class='alert alert-dismissible alert-danger'><strong> </strong>Data is not valid </span>";
+                document.getElementById('outputNIC').innerHTML = "From here you will see the detail user request form if the data is valid. Welcome to the Dummy Text Generator! This handy tool helps you create dummy text for all your layout needs. We are gradually adding new functionality and we welcome your suggestions and feedback. Please feel free to send us any additional dummy texts.";
+                document.getElementById('outputPhoneNum').innerHTML = " ";
+                document.getElementById('disabledRequest').innerHTML = "<button type='button' class='btn btn-success btn-user btn-block' disabled> Request </button>"
+                console.log("Data is Not Valid");
             }
         }
+    }
 
 
-    </script>
+</script>
 
-    <!-- Page Wrapper -->
-    <div id="wrapper">
+<!-- Page Wrapper -->
+<div id="wrapper">
 
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon">
-                    <img src="img/Dialog_logo.png" width="30" />
-                </div>
-                <div class="sidebar-brand-text mx-3">
-                    Data Bank <sup>Web Portal</sup>
-                </div>
-            </a>
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <div class="sidebar-brand-icon">
+                <i class="fas fa-university"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3">Web Portal <sup>prototype</sup></div>
+        </a>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="dashboard.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item">
+            <a class="nav-link" href="dashboard.html">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
 
-            <!-- Nav Item - Request Entry -->
-            <li class="nav-item active">
-                <a class="nav-link" href="add_request.html">
-                    <i class="fas fa-fw fa-edit"></i>
-                    <span>Request Form</span></a>
-            </li>
+        <!-- Nav Item - Request Entry -->
+        <li class="nav-item active">
+            <a class="nav-link" href="add_request.html">
+                <i class="fas fa-fw fa-edit"></i>
+                <span>Request Form</span></a>
+        </li>
 
-            <!-- Nav Item - Request List -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Request List</span></a>
-            </li>
+        <!-- Nav Item - Request List -->
+        <li class="nav-item">
+            <a class="nav-link" href="tables.html">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Request List</span></a>
+        </li>
 
             <!-- Nav Item - Request List -->
             <li class="nav-item">
@@ -202,7 +203,7 @@
                             </div>
                         </li>
 
-                        <div class="topbar-divider d-none d-sm-block"></div>
+                    <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
@@ -220,12 +221,12 @@
                             </div>
                         </li>
 
-                    </ul>
+                </ul>
 
-                </nav>
-                <!-- End of Topbar -->
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
+            </nav>
+            <!-- End of Topbar -->
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -313,11 +314,11 @@
                     </div>
                 </div>
 
-            </div>
-            <!-- /.container-fluid -->
-
         </div>
-        <!-- End of Main Content -->
+        <!-- /.container-fluid -->
+
+    </div>
+    <!-- End of Main Content -->
 
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
@@ -360,40 +361,40 @@
         </div>
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- Page level plugins -->
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
+<!-- Page level custom scripts -->
+<script src="js/demo/datatables-demo.js"></script>
 
     <script>
         function sendNotification() {
             console.log("start");
             const userPhoneNum = document.getElementById("mobileNum").value;
 
-            console.log(userPhoneNum)
+        console.log(userPhoneNum)
 
-            var http = new XMLHttpRequest();
-            var url = 'http://3.14.72.68:8088/api/notification/client/mobile/0755783205';
-            var data = JSON.stringify({
-                "message": "Please verify",
-                "question": "string"
-            });
-            http.open('POST', url, true);
+        var http = new XMLHttpRequest();
+        var url = 'http://3.14.72.68:8088/api/notification/client/mobile/0755783205';
+        var data = JSON.stringify({
+            "message": "Please verify",
+            "question": "string"
+        });
+        http.open('POST', url, true);
 
-            //Send the proper header information along with the request
-            http.setRequestHeader('Content-type', 'application/json');
+        //Send the proper header information along with the request
+        http.setRequestHeader('Content-type', 'application/json');
 
             http.onreadystatechange = function () { //Call a function when the state changes.
                 if (http.readyState == 4 && http.status == 200) {
@@ -404,8 +405,8 @@
             http.send(data);
             setTimeout("location.replace(\"./tables.html\")", 3000);
 
-        }
-    </script>
+    }
+</script>
 
 </body>
 

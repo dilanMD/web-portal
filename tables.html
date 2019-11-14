@@ -35,22 +35,24 @@
                 </div>
             </a>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0" />
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0"/>
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="dashboard.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item">
+            <a class="nav-link" href="dashboard.html">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a
+            >
+        </li>
 
-            <!-- Nav Item - Request Entry -->
-            <li class="nav-item">
-                <a class="nav-link" href="add_request.html">
-                    <i class="fas fa-fw fa-edit"></i>
-                    <span>Request Form</span></a>
-            </li>
+        <!-- Nav Item - Request Entry -->
+        <li class="nav-item">
+            <a class="nav-link" href="add_request.html">
+                <i class="fas fa-fw fa-edit"></i>
+                <span>Request Form</span></a
+            >
+        </li>
 
             <!-- Nav Item - Request List -->
             <li class="nav-item active">
@@ -305,7 +307,7 @@
                   <span class="icon text-white-50">
                   <i class="fa fa-check-circle"></i>
                   </span>
-                  <span class="text">Success</span>
+                  <span class="text" data-toggle="modal" data-target="#myModal">Success</span>
                   </a>
             </td>
             <td class="User_Date"> ${value.requestedDate} </td>
@@ -330,55 +332,59 @@
                 <!-- Modal body -->
                 <div class="modal-body" id="modal_body" name="modal_body">
 
-                    <div class="topright" style="position: absolute; top: 8px; right: 16px; font-size: 18px;"> Our
-                        Rating:
-                        <span class="fa fa-star" style="color: orange;"></span>
-                        <span class="fa fa-star" style="color: orange;"></span>
-                        <span class="fa fa-star" style="color: orange;"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <p class="display-1 degree"
-                            style="position: absolute; top: 30px; right: 16px; font-size: 50px;">
-                            3/5 </p>
-
-                    </div>
-                    <div class="User_Name"> Name:
-                        <script type="text/javascript">
-                            let userDetails1 = JSON.parse(localStorage.getItem('userInfo'));
-                            let userName = userDetails1[0].name;
-                            document.write(" " + userName);
-                        </script>
-                    </div>
-                    <div class="User_NIC"> NIC:
-                        <script type="text/javascript">
-                            let userDetails2 = JSON.parse(localStorage.getItem('userInfo'));
-                            let userNIC = userDetails2[0].userNic;
-                            document.write(" " + userNIC);
-                        </script>
-                    </div>
-                    <div class="User_Phone"> Phone:
-                        <script type="text/javascript">
-                            let userDetails3 = JSON.parse(localStorage.getItem('userInfo'));
-                            let userMobile = userDetails3[0].mobileNo;
-                            document.write(" " + userMobile);
-                        </script>
-                    </div>
-                    <div class="User_RequestedDate"> Date:
-                        <script type="text/javascript">
-                            let userDetails4 = JSON.parse(localStorage.getItem('userInfo'));
-                            let userDate = userDetails4[0].requestedDate;
-                            document.write(" " + userDate);
-                        </script>
-                    </div>
-                    <div class="User_RequestedParty"> Requested Party:
-                        <script type="text/javascript">
-                            let userDetails5 = JSON.parse(localStorage.getItem('userInfo'));
-                            let userParty = userDetails5[0].requestedParty;
-                            document.write(" " + userParty);
-                        </script>
-                    </div>
+                <div class="topright" style="position: absolute; top: 8px; right: 16px; font-size: 18px;"> Customer Score:
+                    <span class="fa fa-star" style="color: orange;"></span>
+                    <span class="fa fa-star" style="color: orange;"></span>
+                    <span class="fa fa-star" style="color: orange;"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <p class="display-1 degree" style="position: absolute; top: 30px; right: 16px; font-size: 50px;">
+                        3/5 </p>
 
                 </div>
+                <div class="User_Name"> Name:
+                    <script type="text/javascript">
+                        let userDetails1 = JSON.parse(localStorage.getItem('userInfo'));
+                        let userName = userDetails1[0].name;
+                        document.write(" " + userName);
+                    </script>
+                </div>
+                <div class="User_NIC"> NIC:
+                    <script type="text/javascript">
+                        let userDetails2 = JSON.parse(localStorage.getItem('userInfo'));
+                        let userNIC = userDetails2[0].userNic;
+                        document.write(" " + userNIC);
+                    </script>
+                </div>
+                <div class="User_Phone"> Phone:
+                    <script type="text/javascript">
+                        let userDetails3 = JSON.parse(localStorage.getItem('userInfo'));
+                        let userMobile = userDetails3[0].mobileNo;
+                        document.write(" " + userMobile);
+                    </script>
+                </div>
+                <div class="User_RequestedDate"> Date:
+                    <script type="text/javascript">
+                        let userDetails4 = JSON.parse(localStorage.getItem('userInfo'));
+                        let userDate = userDetails4[0].requestedDate;
+                        document.write(" " + userDate);
+                    </script>
+                </div>
+                <div class="User_RequestedParty"> Requested Party:
+                    <script type="text/javascript">
+                        let userDetails5 = JSON.parse(localStorage.getItem('userInfo'));
+                        let userParty = userDetails5[0].requestedParty;
+                        document.write(" " + userParty);
+                    </script>
+                </div>
+                <div class="User_Address"> Address:
+                    <script type="text/javascript">
+                        let userDetails6 = JSON.parse(localStorage.getItem('userInfo'));
+                        let userAddress = userDetails6[0].address;
+                        document.write(" " + userAddress);
+                    </script>
+                </div>
+            </div>
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
