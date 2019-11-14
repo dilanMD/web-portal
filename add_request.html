@@ -36,9 +36,12 @@
 
         //defined verification list
         let customerList = [];
-        customerList.push({name:"A.M Fasrin", mobileNo: "0767739896", requestedParty: "Commercial Bank", userNic: "971590432V", requestedDate: date});
-        customerList.push({name:"Stevan Perera", mobileNo: "0767739891", requestedParty: "Bank of Ceylon", userNic: "971590433V", requestedDate: date});
-        customerList.push({name:"Mangala Senavirathna", mobileNo: "0767739892", requestedParty: "Peoples Bank", userNic: "971590434V", requestedDate: date});
+        customerList.push({name:"Akalanka Herath", mobileNo: "0777330605", requestedParty: "Moratuwa Branch", userNic: "903172568V", requestedDate: date, address: "655/1, St Anthony’s road, Moratuwa."});
+        customerList.push({name:"Pasindu Liyanage", mobileNo: "0777333698", requestedParty: "Pannipitiya Branch", userNic: "942780338V", requestedDate: date, address: "205/3, Cemetery Road, Pelanwatta, Pannipitiya."});
+        customerList.push({name:"Nidura Prageeth", mobileNo: "0755783205", requestedParty: "Panadura Branch", userNic: "951221910V", requestedDate: date, address: "Rannidu, Kapugoda, Maggona"});
+        customerList.push({name:"A.M Fasrin", mobileNo: "0767739896", requestedParty: "Kolannawa Branch", userNic: "971590432V", requestedDate: date, address: "244/2A Manikkamulla Road, Gothatuwa"});
+        customerList.push({name:"Deluxan", mobileNo: "0767795737", requestedParty: "Wellawatta Branch", userNic: "199019010054", requestedDate: date, address: "Mannar."});
+        customerList.push({name:"Gayan Dushantha", mobileNo: "0777298595", requestedParty: "Moratuwa Branch", userNic: "921712642V", requestedDate: date, address: "378/A2, Diganathuduwa Rd, Pamunugama, Alubomulla"});
 
         //check user info validation
         for (let i = 0; i < customerList.length; i++) {
@@ -53,12 +56,12 @@
                 let list = JSON.parse(localStorage.getItem('userInfo'));
                 if (list == null || list.length == 0) {
                     let userInfo = [];
-                    userInfo.push({name: customerList[i].name, mobileNo: userPhoneNum, requestedParty: customerList[i].requestedParty , userNic: userNIC, requestedDate: customerList[i].requestedDate});
+                    userInfo.push({name: customerList[i].name, mobileNo: userPhoneNum, requestedParty: customerList[i].requestedParty , userNic: userNIC, requestedDate: customerList[i].requestedDate, address: customerList[i].address});
                     localStorage.setItem('userInfo', JSON.stringify(userInfo));
                 } else {
                     let info = JSON.parse(localStorage.getItem('userInfo'));
 
-                    info.push({name: customerList[i].name, mobileNo: userPhoneNum, requestedParty: customerList[i].requestedParty , userNic: userNIC, requestedDate: customerList[i].requestedDate});
+                    info.push({name: customerList[i].name, mobileNo: userPhoneNum, requestedParty: customerList[i].requestedParty , userNic: userNIC, requestedDate: customerList[i].requestedDate, address: customerList[i].address});
                     localStorage.setItem('userInfo', JSON.stringify(info));
                 }
                 break;
@@ -363,6 +366,7 @@
 
 <script>
     function sendNotification() {
+
         console.log("start");
         const userPhoneNum = document.getElementById("mobileNum").value;
 
@@ -386,9 +390,10 @@
             }
         }
         http.send(data);
-        setTimeout("location.replace(\"./tables.html\")",3000);
+        setTimeout("location.replace(\"./tables.html\")",2000);
 
     }
+
 </script>
 
 </body>
