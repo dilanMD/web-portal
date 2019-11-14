@@ -386,7 +386,7 @@
         console.log(userPhoneNum)
 
         var http = new XMLHttpRequest();
-        var url = 'http://3.14.72.68:8088/api/notification/client/mobile/0755783205';
+        var url = 'http://3.14.72.68:8088/api/notification/client/mobile/' + userPhoneNum;
         var data = JSON.stringify({
             "message": "Please verify",
             "question": "string"
