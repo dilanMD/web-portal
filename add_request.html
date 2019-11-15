@@ -19,6 +19,99 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+    <style type="text/css">
+        body {
+            font-family: 'Varela Round', sans-serif;
+        }
+
+        .modal-confirm {
+            color: #636363;
+            width: 325px;
+        }
+
+        .modal-confirm .modal-content {
+            padding: 20px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .modal-confirm .modal-header {
+            border-bottom: none;
+            position: relative;
+        }
+
+        .modal-confirm h4 {
+            text-align: center;
+            font-size: 26px;
+            margin: 30px 0 -15px;
+        }
+
+        .modal-confirm .form-control, .modal-confirm .btn {
+            min-height: 40px;
+            border-radius: 3px;
+        }
+
+        .modal-confirm .close {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+        }
+
+        .modal-confirm .modal-footer {
+            border: none;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 13px;
+        }
+
+        .modal-confirm .icon-box {
+            color: #fff;
+            position: absolute;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+            top: -70px;
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            z-index: 9;
+            background: #82ce34;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-confirm .icon-box i {
+            font-size: 58px;
+            position: relative;
+            top: 3px;
+        }
+
+        .modal-confirm.modal-dialog {
+            margin-top: 80px;
+        }
+
+        .modal-confirm .btn {
+            color: #fff;
+            border-radius: 4px;
+            background: #82ce34;
+            text-decoration: none;
+            transition: all 0.4s;
+            line-height: normal;
+            border: none;
+        }
+
+        .modal-confirm .btn:hover, .modal-confirm .btn:focus {
+            background: #6fb32b;
+            outline: none;
+        }
+
+        .trigger-btn {
+            display: inline-block;
+            margin: 100px auto;
+        }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- Angular Validation -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
 
@@ -32,16 +125,58 @@
         const userPhoneNum = document.getElementById("mobileNum").value;
 
         let today = new Date();
-        let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
         //defined verification list
         let customerList = [];
-        customerList.push({name:"Akalanka Herath", mobileNo: "0777330605", requestedParty: "Moratuwa Branch", userNic: "903172568V", requestedDate: date, address: "655/1, St Anthony’s road, Moratuwa."});
-        customerList.push({name:"Pasindu Liyanage", mobileNo: "0777333698", requestedParty: "Pannipitiya Branch", userNic: "942780338V", requestedDate: date, address: "205/3, Cemetery Road, Pelanwatta, Pannipitiya."});
-        customerList.push({name:"Nidura Prageeth", mobileNo: "0755783205", requestedParty: "Panadura Branch", userNic: "951221910V", requestedDate: date, address: "Rannidu, Kapugoda, Maggona"});
-        customerList.push({name:"A.M Fasrin", mobileNo: "0767739896", requestedParty: "Kolannawa Branch", userNic: "971590432V", requestedDate: date, address: "244/2A Manikkamulla Road, Gothatuwa"});
-        customerList.push({name:"Deluxan", mobileNo: "0767795737", requestedParty: "Wellawatta Branch", userNic: "199019010054", requestedDate: date, address: "Mannar."});
-        customerList.push({name:"Gayan Dushantha", mobileNo: "0777298595", requestedParty: "Moratuwa Branch", userNic: "921712642V", requestedDate: date, address: "378/A2, Diganathuduwa Rd, Pamunugama, Alubomulla"});
+        customerList.push({
+            name: "Akalanka Herath",
+            mobileNo: "0777330605",
+            requestedParty: "Moratuwa Branch",
+            userNic: "903172568V",
+            requestedDate: date,
+            address: "655/1, St Anthony’s road, Moratuwa."
+        });
+        customerList.push({
+            name: "Pasindu Liyanage",
+            mobileNo: "0777333698",
+            requestedParty: "Pannipitiya Branch",
+            userNic: "942780338V",
+            requestedDate: date,
+            address: "205/3, Cemetery Road, Pelanwatta, Pannipitiya."
+        });
+        customerList.push({
+            name: "Nidura Prageeth",
+            mobileNo: "0755783205",
+            requestedParty: "Panadura Branch",
+            userNic: "951221910V",
+            requestedDate: date,
+            address: "Rannidu, Kapugoda, Maggona"
+        });
+        customerList.push({
+            name: "A.M Fasrin",
+            mobileNo: "0767739896",
+            requestedParty: "Kolannawa Branch",
+            userNic: "971590432V",
+            requestedDate: date,
+            address: "244/2A Manikkamulla Road, Gothatuwa"
+        });
+        customerList.push({
+            name: "Deluxan",
+            mobileNo: "0767795737",
+            requestedParty: "Wellawatta Branch",
+            userNic: "199019010054",
+            requestedDate: date,
+            address: "Mannar."
+        });
+        customerList.push({
+            name: "Gayan Dushantha",
+            mobileNo: "0777298595",
+            requestedParty: "Moratuwa Branch",
+            userNic: "921712642V",
+            requestedDate: date,
+            address: "378/A2, Diganathuduwa Rd, Pamunugama, Alubomulla"
+        });
 
         //check user info validation
         for (let i = 0; i < customerList.length; i++) {
@@ -56,12 +191,26 @@
                 let list = JSON.parse(localStorage.getItem('userInfo'));
                 if (list == null || list.length == 0) {
                     let userInfo = [];
-                    userInfo.push({name: customerList[i].name, mobileNo: userPhoneNum, requestedParty: customerList[i].requestedParty , userNic: userNIC, requestedDate: customerList[i].requestedDate, address: customerList[i].address});
+                    userInfo.push({
+                        name: customerList[i].name,
+                        mobileNo: userPhoneNum,
+                        requestedParty: customerList[i].requestedParty,
+                        userNic: userNIC,
+                        requestedDate: customerList[i].requestedDate,
+                        address: customerList[i].address
+                    });
                     localStorage.setItem('userInfo', JSON.stringify(userInfo));
                 } else {
                     let info = JSON.parse(localStorage.getItem('userInfo'));
 
-                    info.push({name: customerList[i].name, mobileNo: userPhoneNum, requestedParty: customerList[i].requestedParty , userNic: userNIC, requestedDate: customerList[i].requestedDate, address: customerList[i].address});
+                    info.push({
+                        name: customerList[i].name,
+                        mobileNo: userPhoneNum,
+                        requestedParty: customerList[i].requestedParty,
+                        userNic: userNIC,
+                        requestedDate: customerList[i].requestedDate,
+                        address: customerList[i].address
+                    });
                     localStorage.setItem('userInfo', JSON.stringify(info));
                 }
                 break;
@@ -301,6 +450,25 @@
             </div>
 
         </div>
+        <!-- Success Modal -->
+        <div id="overlay" class="modal fade">
+            <div class="modal-dialog modal-confirm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="icon-box">
+                            <i class="material-icons">&#xE876;</i>
+                        </div>
+                        <h4 class="modal-title">Awesome!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-center">Your request has been sent successfully.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- /.container-fluid -->
 
     </div>
@@ -389,11 +557,28 @@
                 alert(http.responseText);
             }
         }
-        http.send(data);
-        setTimeout("location.replace(\"./tables.html\")",2000);
+        //http.send(data);
+        // setTimeout(function(){ alert("Hello"); },1000);
+        $('#overlay').modal('show');
 
+        setTimeout(function () {
+            $('#overlay').modal('hide');
+        }, 1500);
     }
 </script>
+<!--<div class="modal fade" id="overlay">-->
+<!--    <div class="modal-dialog">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h4 class="modal-title">Request Status</h4>-->
+<!--                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <p>Your request has been sent successfully</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 </body>
 
