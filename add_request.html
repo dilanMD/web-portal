@@ -184,7 +184,7 @@
                 document.getElementById('result').innerHTML = "<span class='alert alert-dismissible alert-success'><strong> Well! </strong>Data is valid </span>";
                 document.getElementById('outputNIC').innerHTML = "Data has been verified. Now you can request to fetch below customer data. <br/>  <br/> Customer NIC Number: " + userNIC;
                 document.getElementById('outputPhoneNum').innerHTML = "Customer Phone Number: " + userPhoneNum;
-                document.getElementById('disabledRequest').innerHTML = "<button type='button' class='btn btn-success btn-user btn-block' onclick='sendNotification()'> Request </button>"
+                document.getElementById('disabledRequest').innerHTML = "<button type='button' class='btn btn-success btn-user btn-block' onclick='sendNotification()' style=' background: #82ce34'> Request </button>"
 
 
                 //add valid data to the localStorage
@@ -435,7 +435,7 @@
                                             <div class="col-md-12 col-sm-6 mb-3 mb-sm-0">
                                                         <span type="text" id="disabledRequest" name="disabledRequest">
                           <button type='submit' class='btn btn-success btn-user btn-block' id="requestSMSAPI"
-                                  name="requestSMSAPI" disabled> Request </button>
+                                  name="requestSMSAPI" style=' background: #82ce34 ;text-decoration: none' disabled> Request </button>
                             </span>
                                             </div>
                                             <a href="#" name="request" id="request" style="text-decoration: none">
